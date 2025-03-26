@@ -1,12 +1,14 @@
-
+from webdriver_manager.chrome import ChromeDriverManager
 import allure
-import os
 
-import pytest
+from selene.support.shared import browser
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selene import browser, have, be, by
 
 @allure.title("Successful fill form demoqa")
 def test_demoqa():
+    browser.config.driver = webdriver.Chrome()
     with allure.step("Open form"):
         browser.open('https://demoqa.com/automation-practice-form')
         browser.driver.execute_script("$('#fixedban').remove()")
